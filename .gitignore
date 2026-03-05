@@ -1,0 +1,36 @@
+# Go
+*.o
+*.a
+*.so
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+.DS_Store
+.env
+.env.local
+dist/
+bin/
+
+# Frontend
+node_modules/
+.pnpm-debug.log*
+.npm
+*.tsbuildinfo
+dist/
+*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Temporary
+tmp/
+temp/
+*.log
+.air

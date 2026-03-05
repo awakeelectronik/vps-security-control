@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: vps-security-db
+    environment:
+      POSTGRES_USER: vps_user
+      POSTGRES_PASSWORD: vps_password
+      POSTGRES_DB: vps_security
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vps_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - vps-security-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: vps-security-api
+    environment:
+      DATABASE_URL: postgresql://vps_user:vps_password@postgres:5432/vps_security
+      JWT_SECRET: your-secret-key-change-this
+      PORT: 8080
+      LOG_LEVEL: debug
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    command: go run cmd/api/main.go
+    networks:
+      - vps-security-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: vps-security-web
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_API_URL: http://localhost:8080/api
+      VITE_WS_URL: ws://localhost:8080/ws
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev
+    networks:
+      - vps-security-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  vps-security-network:
+    driver: bridge

@@ -1,0 +1,10 @@
+github.com/gin-gonic/gin v1.9.1 h1:4idEAncQnU5cB7BeachG3J5+jGT3i9LT7R3RGwDuYQ=
+github.com/gin-gonic/gin v1.9.1/go.mod h1:hPrL7YrpYKXt5YId3xXiyrMzxjnZAKPm2we51VVqw8=
+github.com/joho/godotenv v1.5.1 h1:7NXrPUe2vre3JZ1S0U3xf+EjYkZt1N9lPdNaXXFY2M=
+github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DxwEWRzEo=
+github.com/lib/pq v1.10.9 h1:YXG7RB+JIjhP29X+OtkiDnYaXQsRKldLHCjIeQf0OA=
+github.com/lib/pq v1.10.9/go.mod h1:AlVN5x4E4xnaC4m3nBeiFo3cbCeTKhN+/L/Z9P3s0I=
+github.com/golang-jwt/jwt/v5 v5.0.0 h1:1n1XNM9hsp+FvLMQWWPmSnSQGj963QGe9DsQvqC2bk=
+github.com/golang-jwt/jwt/v5 v5.0.0/go.mod h1:pqrtFR0X4osisvujlMH9J5xicRP97s12BLvP6cubLs=
+github.com/google/uuid v1.4.0 h1:MtMxsa51/r9yyhkyLsVeVt0S2pnF7J+7BTLhkstNvs=
+github.com/google/uuid v1.4.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqYLIJQ6oshAKc4=
